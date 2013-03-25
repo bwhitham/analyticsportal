@@ -1,4 +1,5 @@
-/* mixins */
+/* Mixin definitions for User Analytics portal */
+
 .boxsizing(@boxsizing: border-box) { 
 	-webkit-box-sizing: @boxsizing;
 	-moz-box-sizing: 	@boxsizing;
@@ -10,13 +11,6 @@
 	-moz-box-shadow: 	@boxshadow;
 	-o-box-shadow: 		@boxshadow;
 	box-shadow: 		@boxshadow;
-}
-
-.borderradius(@borderradius) { 
-	-webkit-border-radius: 	@borderradius;
-	-moz-border-radius: 	@borderradius;
-	-o-border-radius: 		@borderradius;
-	border-radius: 			@borderradius;
 }
 
 .transform(@transform) {
@@ -39,8 +33,46 @@
 	column-count: 			@columncount;
 }
 
+/* Thanks to Fabio Basile for the browser icons via Dribble http://www.fffabs.com */
 .sprite(@backgroundposition) { 
-	background-image: 		url('img/styleandstandards-sprite.png');
+	background-image: 		url("../img/analyticsportal-sprite.png");
 	background-repeat: 		no-repeat;
 	background-position:	@backgroundposition;
 }
+
+.borderradius (@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+
+	-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;
+}
+
+.borderradiuses (@topright, @bottomright, @bottomleft, @topleft) {
+	-webkit-border-top-right-radius:    @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius:  @bottomleft;
+	-webkit-border-top-left-radius:     @topleft;
+
+	-moz-border-radius-topright:        @topright;
+	-moz-border-radius-bottomright:     @bottomright;
+	-moz-border-radius-bottomleft:      @bottomleft;
+	-moz-border-radius-topleft:         @topleft;
+
+	border-top-right-radius:            @topright;
+	border-bottom-right-radius:         @bottomright;
+	border-bottom-left-radius:          @bottomleft;
+	border-top-left-radius:             @topleft;
+
+	-moz-background-clip:    padding; 
+	-webkit-background-clip: padding-box; 
+	background-clip:         padding-box; 
+}
+
+
+
+
+
+

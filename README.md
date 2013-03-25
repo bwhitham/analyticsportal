@@ -11,3 +11,6 @@
 <a href="http://www.twitter.com/sourdoughdetzel" target="_blank">@sourdoughdetzel</a>
 <p>Phillisk</p>
 <p>Master KO</p>
+
+<hr>
+<small>Thanks to <a href="http://www.fffabs.com" target="_blank">Fabio Basile</a> for the browser icons via Dribble</small>
