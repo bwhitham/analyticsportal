@@ -1,0 +1,49 @@
+/* 
+Styles for Chatham's User Analytics Portal
+Authored: @bwhitham, @sourdoughdetzel, Philisk Johnson;
+*/
+
+@import url(mixins.less);
+@import url(colors.less);
+
+/*====================================================================== universals */
+
+*, *:after, *:before {
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+.clear { clear:both; }
+
+::-webkit-selection {	background-color: black color: white; text-shadow: none;}
+::-moz-selection {		background-color: black color: white; text-shadow: none;}
+::selection { 			background-color: black color: white; text-shadow: none;}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display:block; }
+
+a, a:focus, a:hover, a:active {
+	outline: 0; 
+	text-decoration: underline; 
+	cursor: pointer;
+	color: black
+}
+
+a {
+	.transition(color 0.3s linear);
+
+	&:hover { color: @bluemed;}
+}
+
+
+img { border: 0; -ms-interpolation-mode:bicubic; vertical-align: middle; }
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+	-webkit-appearance: none;
+	*overflow: visible;
+	cursor: pointer;
+}
+
+hr { border-top: black; border-bottom: none; }
+
+input:focus {outline:0; border:0;}
