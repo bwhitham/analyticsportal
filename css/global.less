@@ -13,9 +13,9 @@ Authored: @bwhitham, @sourdoughdetzel, Phillisk Johnson;
 
 .clear { clear:both; }
 
-::-webkit-selection {	background-color: black; color: white; text-shadow: none;}
-::-moz-selection {		background-color: black; color: white; text-shadow: none;}
-::selection { 			background-color: black; color: white; text-shadow: none;}
+::-webkit-selection {	background-color: @gray; color: @gray-lt; text-shadow: none;}
+::-moz-selection {		background-color: @gray; color: @gray-lt; text-shadow: none;}
+::selection { 			background-color: @gray; color: @gray-lt; text-shadow: none;}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, i { display:block; }
 
@@ -40,6 +40,8 @@ hr { border-top: black; border-bottom: none; }
 
 input:focus {outline:0; border:0;}
 
+/*====================================================================== forms */
+
 
 /*====================================================================== typography */
 
@@ -60,6 +62,11 @@ h1[name="pagetitle"] {
 	font-size: 45px;
 	color: white;
 	text-shadow: 0 -1px 1px @blue-lt;
+}
+
+h1, h2, h3, label { 
+	font-family: Marvel, "Helvetica Neue", sans-serif;
+	font-weight: 400px;
 }
 
 /*====================================================================== grid */
@@ -118,37 +125,137 @@ html {
 .col4,
 .col8 {
 
-	&[name="aquatile"] { background-color: @aqua; }
+	&[name="aquatile"] { background-color:		@aqua; }
+	&[name="yellowtile"] { background-color:	@yellow; }
+	&[name="graytile"] { background-color:		@gray; }
+	&[name="redtile"] { background-color:		@red; }
+	&[name="greentile"] { background-color:		@green; }
+	&[name="bluetile"] { background-color:		@blue; }
+
+	&[name="aquatile"],
+	&[name="yellowtile"],
+	&[name="graytile"],
+	&[name="redtile"],
+	&[name="greentile"],
+	&[name="bluetile"] { 
+		padding: 20px;
+		color: white;
+		position: relative;
+
+		div.icon,
+		label {
+			float: left;
+			font-size: 40px;
+			margin: 0 10px 0 0;
+		}
+
+		h2.visits {
+			display: block;
+			float: right;
+			font-size: 20px;
+			line-height: 20px;
+			margin: 5px 0 0 0;
+			
+			span { font-size: 30px; }
+		}
+	}
+
 }
 
 /*====================================================================== header */
 
 header.global {
 	width: 100%;
+	margin: 0 0 20px 0;
 }
 
-nav[name="logo"] {
-	display: block;
+nav.global {
 	position: relative;
+	width: inherit;
 	height: 50px;
-	background-color: @gray;
-	.transition(background-color);
 
-	&:hover { background-color: @gray-med; }
-
-	a { 
+	a, 
+	menu.view {
+		float:left;
+		height: 100%;
+		display: block; 
 		font-family: Marvel, "Helvetica Neue", sans-serif;
 		font-weight: 400px;
 		font-size: 40px;
 		text-align: center;
-		display: block;
-		min-width: 100%; 
-		min-height: 100%;
 		color: white;
 		text-decoration: none;
-		.transition(color);
+		background-color: @gray;
+		.transition(all);
 
-		&:hover { color: @gray; }
+		&:hover { 
+			color: @gray;
+			background-color: @gray-med; 
+		}
+	}
+
+	menu.view {
+		margin: 0 0 0 20px;
+		padding: 0 20px;
+		position: relative;
+		cursor: pointer;
+
+		label {
+			float: left;
+			display: block;
+			cursor: pointer;
+
+			&.range { margin: 0 0 0 7px; }
+		}
+
+		ul {
+			display: none;
+			list-style: none;
+			position: absolute;
+			top: 50px;
+			right: 0;
+			text-align: right;
+			background-color: @gray-med;
+			width: 100%;
+
+			li {
+				padding: 10px 20px;
+				.transition(all);
+				color: @gray;
+
+				&:hover {  
+					color: @gray-lt;
+					background-color: @gray;
+				}
+			}
+		}
+
+		&:hover > ul { display: block; }
+	}
+
+	div.menu {
+
+		border: 1px solid black;
+		width: 100px;
+
+		div.button { 
+			display: block;
+			width: 50px;
+			height: 50px;
+			background-color: black;
+			cursor: pointer;
+		}
+
+		ul { 
+			display: none; 
+			list-style: none; 
+			position: absolute;
+			top: 35px;
+			left: 0;
+		}
+
+		&:hover > ul { display: block; }
+
 	}
 }
 
@@ -157,9 +264,9 @@ header.chathambar {
   top: 0;
   right: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   background-color: rgba(75, 146, 194, 1.0);
-  .boxshadow(0 1px 1px @gray-lt);
+  /*.boxshadow(0 1px 1px @gray-lt);*/
 }
 
 header.chathambar .orange,
@@ -196,18 +303,11 @@ i {
 	&[name="browser-chrome"] { .sprite(-32px 0); }
 	&[name="browser-chromerev"] { .sprite(-32px -32px); }
 
-	&[name="browser-ff"] { .sprite(-64px 0); }
-	&[name="browser-ffrev"] { .sprite(-64px -32px); }
+	&[name="browser-ie"] { .sprite(-64px 0); }
+	&[name="browser-ierev"] { .sprite(-64px -32px); }
 
-	&[name="browser-ie"] { .sprite(-96px 0); }
-	&[name="browser-ierev"] { .sprite(-96px -32px); }
-}
-
-
-/*====================================================================== forms */
-
-select {
-	-webkit-appearance: none;
+	&[name="browser-ff"] { .sprite(-96px 0); }
+	&[name="browser-ffrev"] { .sprite(-96px -32px); }
 }
 
 
