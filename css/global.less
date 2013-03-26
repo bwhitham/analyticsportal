@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Marvel:400,700);
 @import url(mixins.less);
 @import url(colors-styles.less);
 
@@ -69,6 +69,7 @@ body {
 	min-height: 100%;
 	margin: 0 auto;
 	position: relative;
+	padding: 15px 0;
 }
 
 header.global {
@@ -107,9 +108,10 @@ section.content {
 html {
 	width: 100%;
 	height: 100%;
-	background-image: -webkit-radial-gradient(top left, cover, @gray-lt, @gray);
-	background-repeat: no-repeat;
-	background-origin: fixed;
+	background-color: @gray-lt;
+	// background-image: -webkit-radial-gradient(top left, cover, @gray-lt, @gray);
+	// background-repeat: no-repeat;
+	// background-origin: fixed;
 }
 
 .col2,
@@ -122,15 +124,32 @@ html {
 /*====================================================================== header */
 
 header.global {
-	position: absolute;
-	top: 3px;
-	left: 0;
 	width: 100%;
-	padding: 3px;
-	font-size: 13px;
-	color: white;
-	background-color: black;
-	text-align: center;
+}
+
+nav[name="logo"] {
+	display: block;
+	position: relative;
+	height: 50px;
+	background-color: @gray;
+	.transition(background-color);
+
+	&:hover { background-color: @gray-med; }
+
+	a { 
+		font-family: Marvel, "Helvetica Neue", sans-serif;
+		font-weight: 400px;
+		font-size: 40px;
+		text-align: center;
+		display: block;
+		min-width: 100%; 
+		min-height: 100%;
+		color: white;
+		text-decoration: none;
+		.transition(color);
+
+		&:hover { color: @gray; }
+	}
 }
 
 header.chathambar {
@@ -157,12 +176,12 @@ header.chathambar .gray { background-color: rgba(169, 170, 174, 1.0); }
 
 div.icon {
 	.boxsizing();
-	width: 64px;
-	height: 64px;
+	width: 52px;
+	height: 52px;
 	.borderradius(50%);
 	border: 2px solid white;
 	// background-color: @gray-med;
-	padding: 12px 0 0 0;
+	padding: 7px 0 0 0;
 }
 
 
@@ -185,7 +204,11 @@ i {
 }
 
 
+/*====================================================================== forms */
 
+select {
+	-webkit-appearance: none;
+}
 
 
 
