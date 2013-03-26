@@ -1,11 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Marvel:400,700);
-@import url(mixins.less);
-@import url(colors-styles.less);
-
 /* 
 Styles for Chatham's User Analytics Portal
 Authored: @bwhitham, @sourdoughdetzel, Phillisk Johnson;
 */
+
+
+@import url(http://fonts.googleapis.com/css?family=Marvel:400,700);
+@import url(mixins.less);
+@import url(colors-styles.less);
+
 
 /*====================================================================== universals */
 
@@ -46,7 +48,8 @@ input:focus {outline:0; border:0;}
 /*====================================================================== typography */
 
 html { 
-	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Marvel, "Helvetica Neue", sans-serif;
+	font-weight: 400px;
 	color: black;
 	font-size: 					100%;
 	-webkit-text-size-adjust: 	100%;
@@ -58,16 +61,13 @@ html {
 	text-rendering: 		optimizeLegibility;
 }
 
-h1[name="pagetitle"] {
-	font-size: 45px;
-	color: white;
-	text-shadow: 0 -1px 1px @blue-lt;
+li {
+	font-size: 25px;
 }
 
-h1, h2, h3, label { 
-	font-family: Marvel, "Helvetica Neue", sans-serif;
-	font-weight: 400px;
-}
+a, a:visited { color: inherit; }
+
+a.viewall { font-size: 20px; }
 
 /*====================================================================== grid */
 
@@ -93,6 +93,7 @@ body,
 section.content {
 	min-width: 100%;
 	min-height: 150px;
+	margin: 0 0 20px 0;
 
 	&[name="browser"] { background-color: @gray;}
 }
@@ -106,7 +107,12 @@ section.content {
 	&:nth-child(1) { margin: 0 0 0 0;}
 }
 
-.col2 {	width: 620px; }
+.col2 {	
+	width: 620px; 
+
+	.col2 { width: 290px; }
+}
+
 .col4 {	width: 300px; }
 .col8 {	width: 140px; }
 
@@ -115,10 +121,10 @@ section.content {
 html {
 	width: 100%;
 	height: 100%;
-	background-color: @gray-lt;
-	// background-image: -webkit-radial-gradient(top left, cover, @gray-lt, @gray);
-	// background-repeat: no-repeat;
-	// background-origin: fixed;
+	// background-color: @gray-lt;
+	background-image: -webkit-radial-gradient(top left, cover, @gray-lt 60%, @gray-med);
+	background-repeat: no-repeat;
+	background-origin: fixed;
 }
 
 .col2,
@@ -130,19 +136,27 @@ html {
 	&[name="graytile"] { background-color:		@gray; }
 	&[name="redtile"] { background-color:		@red; }
 	&[name="greentile"] { background-color:		@green; }
-	&[name="bluetile"] { background-color:		@blue; }
+	&[name="bluetile"]	{ background-color:		@blue; }
+	&[name="whitetile"] { background-color:		white; }
 
 	&[name="aquatile"],
 	&[name="yellowtile"],
 	&[name="graytile"],
 	&[name="redtile"],
 	&[name="greentile"],
-	&[name="bluetile"] { 
-		padding: 20px;
+	&[name="bluetile"],
+	&[name="whitetile"] { 
+		padding: 10px;
 		color: white;
 		position: relative;
+		
+		a.viewall { 
+			float: right;
+			margin: 10px 0 0 0;
+		 }
 
 		div.icon,
+		div.icondark,
 		label {
 			float: left;
 			font-size: 40px;
@@ -156,8 +170,67 @@ html {
 			line-height: 20px;
 			margin: 5px 0 0 0;
 			
-			span { font-size: 30px; }
+			span { font-size: 40px; }
 		}
+
+		ul {
+			list-style: none;
+
+			li {
+				background-color: @white10;
+				padding: 10px;
+				margin: 10px 0 0 0;
+				position: relative;
+
+				span.amountvisits,
+				span.amountclicks { 
+					float: right; 
+					text-align: right;
+					min-width: 15px;
+					display: block;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					min-width: 100%;
+					min-height: 100%;
+
+					&:hover {
+						background-color: @gray-med;
+					}
+				}
+			}
+
+			a {
+				display: block;
+				padding: 10px;
+				margin: 10px 0 0 0;
+				position: relative;
+				width: 100%;
+				background-color: @gray-lt;
+				font-size: 25px;
+				text-decoration: none;
+				.boxsizing();
+				.transition(all);
+				color: @aqua;
+
+				&:hover {
+					color: white;
+					background-color: @gray-med;
+				}
+			}
+		}
+	}
+
+	&[name="whitetile"] { 
+		color: @gray;	
+		
+		ul {
+			li { background-color: @gray-lt; }
+		}
+
+		a.viewall { color: @aqua; }
 	}
 
 }
@@ -166,7 +239,9 @@ html {
 
 header.global {
 	width: 100%;
-	margin: 0 0 20px 0;
+	margin: 0 0 10px 0;
+	position: relative;
+	z-index: 1000;
 }
 
 nav.global {
@@ -179,8 +254,6 @@ nav.global {
 		float:left;
 		height: 100%;
 		display: block; 
-		font-family: Marvel, "Helvetica Neue", sans-serif;
-		font-weight: 400px;
 		font-size: 40px;
 		text-align: center;
 		color: white;
@@ -219,6 +292,7 @@ nav.global {
 			width: 100%;
 
 			li {
+				font-size: 40px;
 				padding: 10px 20px;
 				.transition(all);
 				color: @gray;
@@ -281,33 +355,48 @@ header.chathambar .gray { background-color: rgba(169, 170, 174, 1.0); }
 
 /*====================================================================== icons */
 
-div.icon {
+div.icon,
+div.icondark {
 	.boxsizing();
 	width: 52px;
 	height: 52px;
-	.borderradius(50%);
-	border: 2px solid white;
+	// .borderradius(50%);
+	border: 2px solid @white20;
 	// background-color: @gray-med;
-	padding: 7px 0 0 0;
+	padding: 8px 0 0 0;
 }
-
+	
+div.icondark { border-color: @gray-med; }
 
 i {
 	width: 32px;
 	height: 32px;
 	margin: 0 auto;
 
-	&[name="browser-safari"] { .sprite(0 0); }
-	&[name="browser-safarirev"] { .sprite(0 -32px); }
+	&[name="browser-safari"] {		.sprite(0 0); }
+	&[name="browser-safarirev"] {	.sprite(0 -32px); }
 
-	&[name="browser-chrome"] { .sprite(-32px 0); }
-	&[name="browser-chromerev"] { .sprite(-32px -32px); }
+	&[name="browser-chrome"] {		.sprite(-32px 0); }
+	&[name="browser-chromerev"] {	.sprite(-32px -32px); }
 
-	&[name="browser-ie"] { .sprite(-64px 0); }
-	&[name="browser-ierev"] { .sprite(-64px -32px); }
+	&[name="browser-ie"] {			.sprite(-64px 0); }
+	&[name="browser-ierev"] {		.sprite(-64px -32px); }
+	
+	&[name="browser-ff"] {			.sprite(-96px 0); }
+	&[name="browser-ffrev"] {		.sprite(-96px -32px); }
+	
+	&[name="screenres"] {			.sprite(-128px 0); }
+	&[name="screenresrev"] {		.sprite(-128px -32px); }
 
-	&[name="browser-ff"] { .sprite(-96px 0); }
-	&[name="browser-ffrev"] { .sprite(-96px -32px); }
+	&[name="device"] {				.sprite(-160px 0); }
+	&[name="devicerev"] {			.sprite(-160px -32px); }
+
+	&[name="pages"] {				.sprite(-192px 0); }
+	&[name="pagesrev"] {			.sprite(-192px -32px); }
+
+	&[name="clicks"] {				.sprite(-224px 0); }
+	&[name="clicksrev"] {			.sprite(-224px -32px); }
+
 }
 
 
