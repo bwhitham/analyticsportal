@@ -292,12 +292,16 @@ ul.listview {
 			float: left;
 			.boxsizing();
 
-			&.username { 
+			&.rowtitle { 
 				border-right: 1px solid @gray-med;
 				padding: 20px 5px 5px 5px;
 				margin: 0 10px 0 0;
 				width: 200px;
-				height: 70px;
+				min-height: 70px;
+
+				&[name="largetitle"] {
+					width: 350px;
+				}
 			 }
 
 			&.details {	
@@ -316,30 +320,37 @@ ul.listview {
 					&.screenres { 	width: 170px; }
 					&.pagevisited { 	width: 275px; }
 
-					.ie { 		
-						background-color: @blue;	
+					.ie,
+					.chrome,
+					.ff,
+					.safari,
+					.high,
+					.medium,
+					.low {
 						color: white; 
 						padding: 0 5px;
-						width: 100%; }
-					.chrome { 	
-						background-color: @green;	
-						color: white; 
-						padding: 0 5px;
-						width: 100%; }
-					.ff { 		
-						background-color: @yellow;	
-						color: white; 
-						padding: 0 5px;
-						width: 100%; }
-					.sarari { 	
-						background-color: @aqua;	
-						color: white; 
-						padding: 0 5px;
-						width: 100%; }
+						width: 100%;
+					}
+
+					.ie { 		background-color: @blue; }
+					
+					.chrome {	background-color: @green; }
+					
+					.high {		background-color: @red; }
+
+					.ff,
+					.medium {	background-color: @yellow; }
+					
+					.sarari,
+					.low { 		background-color: @aqua; }
+
+					.high,
+					.medium,
+					.low { 
+						small { float: right; margin: 3px 0 0 0;}
+					}
 				}
 			}
-
-
 		}
 	}
 }
@@ -393,7 +404,7 @@ nav.global {
 		&[name="clicks"] { 		background-color: @red; }
 		&[name="users"] { 		background-color: @gray; }
 		&[name="screenres"] { 	background-color: white; }
-		&[name="pages"] { 		background-color: white; }
+		&[name="pages"] { 		background-color: white; color: @gray; }
 		&[name="clients"] { 	background-color: @orange; }
 
 		i { 
