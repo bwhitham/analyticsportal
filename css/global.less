@@ -25,7 +25,7 @@ a, a:focus, a:hover, a:active {
 	outline: 0; 
 	text-decoration: underline; 
 	cursor: pointer;
-	color: black
+	color: inherit;
 }
 
 a {}
@@ -86,9 +86,10 @@ header.global {
 }
 
 body,
+.spread,
 .col2,
 .col4,
-.col8, { .boxsizing; }
+.col8 { .boxsizing; }
 
 section.content {
 	min-width: 100%;
@@ -97,6 +98,8 @@ section.content {
 
 	&[name="browser"] { background-color: @gray;}
 }
+
+.spread { width: inherit; }
 
 .col2,
 .col4,
@@ -121,12 +124,12 @@ section.content {
 html {
 	width: 100%;
 	height: 100%;
-	// background-color: @gray-lt;
+	/*background-color: @gray-lt;*/
 	background-image: -webkit-radial-gradient(top left, cover, @gray-lt 60%, @gray-med);
 	background-repeat: no-repeat;
 	background-origin: fixed;
 }
-
+.spread,
 .col2,
 .col4,
 .col8 {
@@ -176,6 +179,14 @@ html {
 		ul {
 			list-style: none;
 
+			a.col4 {
+				width: 295px;
+				float: left;
+				margin: 0 0 20px 20px;
+		
+				&:nth-child(1) { margin: 0 0 0 0;}
+			}
+
 			li {
 				background-color: @white10;
 				padding: 10px;
@@ -208,26 +219,36 @@ html {
 				margin: 10px 0 0 0;
 				position: relative;
 				width: 100%;
-				background-color: @gray-lt;
+				background-color: @white10;
 				font-size: 25px;
 				text-decoration: none;
 				.boxsizing();
 				.transition(all);
-				color: @aqua;
+				color: @aqua-lt;
 
 				&:hover {
 					color: white;
-					background-color: @gray-med;
+					background-color: @white30;
 				}
 			}
 		}
 	}
+
 
 	&[name="whitetile"] { 
 		color: @gray;	
 		
 		ul {
 			li { background-color: @gray-lt; }
+
+			a {
+			background-color: @gray-lt;
+			color: @aqua;
+			
+			&:hover {
+				background-color: @gray-med;
+			}
+		}
 		}
 
 		a.viewall { color: @aqua; }
@@ -360,9 +381,9 @@ div.icondark {
 	.boxsizing();
 	width: 52px;
 	height: 52px;
-	// .borderradius(50%);
+	/*.borderradius(50%);*/
 	border: 2px solid @white20;
-	// background-color: @gray-med;
+	/*background-color: @gray-med;*/
 	padding: 8px 0 0 0;
 }
 	
@@ -399,6 +420,9 @@ i {
 
 	&[name="user"] {				.sprite(-256px 0); }
 	&[name="userrev"] {				.sprite(-256px -32px); }
+
+	&[name="client"] {				.sprite(-288px 0); }
+	&[name="clientrev"] {			.sprite(-288px -32px); }
 
 }
 
