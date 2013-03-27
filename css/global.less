@@ -127,7 +127,7 @@ html {
 	/*background-color: @gray-lt;*/
 	background-image: -webkit-radial-gradient(top left, cover, @gray-lt 60%, @gray-med);
 	background-repeat: no-repeat;
-	background-origin: fixed;
+	background-attachment: fixed;
 }
 .spread,
 .col2,
@@ -182,9 +182,9 @@ html {
 			a.col4 {
 				width: 295px;
 				float: left;
-				margin: 0 0 20px 20px;
+				margin: 10px 0 0 20px;
 		
-				&:nth-child(1) { margin: 0 0 0 0;}
+				&:nth-child(1) { margin: 10px 0 0 0; }
 			}
 
 			li {
@@ -192,14 +192,6 @@ html {
 				padding: 10px;
 				margin: 10px 0 0 0;
 				position: relative;
-
-				span.amountvisits,
-				span.amountclicks { 
-					float: right; 
-					text-align: right;
-					min-width: 15px;
-					display: block;
-				}
 
 				a {
 					text-decoration: none;
@@ -219,21 +211,43 @@ html {
 				margin: 10px 0 0 0;
 				position: relative;
 				width: 100%;
-				background-color: @white10;
 				font-size: 25px;
 				text-decoration: none;
 				.boxsizing();
 				.transition(all);
-				color: @aqua-lt;
+				color: white;
+				background-color: @white10;
 
 				&:hover {
 					color: white;
 					background-color: @white30;
 				}
 			}
+
+			li, a {
+				span.amountvisits,
+				span.amountclicks { 
+					float: right; 
+					text-align: right;
+					min-width: 15px;
+					display: block;
+				}
+			}
 		}
 	}
 
+	&[name="graytile"] {
+		ul {
+			a {
+				color: @aqua-lt;
+				background-color: @white10;
+				
+				&:hover {
+					background-color: @white30;
+				}
+			}
+		}
+	}
 
 	&[name="whitetile"] { 
 		color: @gray;	
