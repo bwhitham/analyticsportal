@@ -285,7 +285,8 @@ nav.global {
 	height: 50px;
 
 	a, 
-	menu.view {
+	menu.view,
+	label.page {
 		float:left;
 		height: 100%;
 		display: block; 
@@ -293,16 +294,41 @@ nav.global {
 		text-align: center;
 		color: white;
 		text-decoration: none;
-		background-color: @gray;
+		background-color: @drkgray;
 		.transition(all);
 
 		&:hover { 
-			color: @gray;
+			color: @drkgray;
 			background-color: @gray-med; 
 		}
 	}
 
+	label.page {
+		padding: 0 20px 0 10px;
+		margin: 0 0 0 20px;
+		position: relative;
+		text-align: left;
+		.transition(none);
+
+		&:hover {
+			background-color:@gray;
+			color: white;
+		}
+
+		&[name="clicks"] { 		background-color: @red; }
+		&[name="users"] { 		background-color: @gray; }
+		&[name="screenres"] { 	background-color: white; }
+		&[name="pages"] { 		background-color: white; }
+		&[name="clients"] { 	background-color: @yellow; }
+
+		i { 
+			float: left; 
+			margin: 10px 10px 0 0;
+		}
+	}
+
 	menu.view {
+		min-width: 250px;
 		margin: 0 0 0 20px;
 		padding: 0 20px;
 		position: relative;
@@ -330,11 +356,11 @@ nav.global {
 				font-size: 40px;
 				padding: 10px 20px;
 				.transition(all);
-				color: @gray;
+				color: @drkgray;
 
 				&:hover {  
 					color: @gray-lt;
-					background-color: @gray;
+					background-color: @drkgray;
 				}
 			}
 		}
@@ -375,6 +401,7 @@ header.chathambar {
   left: 0;
   height: 3px;
   background-color: rgba(75, 146, 194, 1.0);
+  z-index: 1001;
   /*.boxshadow(0 1px 1px @gray-lt);*/
 }
 
